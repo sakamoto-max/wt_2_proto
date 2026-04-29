@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package exercise;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "/shared/exercise";
+//
+service ExerciseService {
+    // used by plan service
+    rpc ExerciseExistsReturnId(SendExerciseName) returns (ExerciseExistsReturnIdResp) {};
+    //
+    rpc ExerciseExistsInMainReturnEveryThing(SendExerciseName) returns (sendEverythingResp) {};
+    // used by plan service
+    rpc GetExerciseName(SendExerciseID) returns (GetExerciseNameResp) {};
+    //
+    rpc GetAllExercises(GetAllExercisesREq) returns (GetAllExercisesResp) {};
+    //  
+    rpc GetOneExercise(SendExerciseName) returns (OneExerciseResp) {};
+    // 
+    rpc CreateExercise(CreateExerciseReq) returns (CreateExerciseResp) {};
+    //
+    // rpc UpdateExercise() returns () {};
+    // 
+    rpc DeleteExercise(SendExerciseName) returns (DeleteExerciseResp) {};
+//
+    rpc PING(PingExerReq) returns (PingExerResp) {};
+    //
+    rpc GetHealth(GetHealthReq) returns (GetHealthResp) {};
+}
+
+//
+message sendEverythingResp {
+    string name = 1;
+    int64 body_part_id = 2;
+    int64 rest_time_in_seconds = 3;
+    int64 equipment_id = 4;  
+    
+}
+
+message GetHealthReq {}
+
+message GetHealthResp {
+    string service_name = 1;
+    string status = 2;
+    google.protobuf.Duration postgres_resp_time = 3;
+    google.protobuf.Duration redis_resp_time = 4;    
+}
+
+
+message PingExerReq {}
+
+message PingExerResp {}
+
+// 
+message CreateExerciseReq {
+    string exercise_name = 1;
+    string body_part = 2;
+    string equipment = 3;
+    string user_id = 4;
+}
+message CreateExerciseResp {    
+    string id = 1;
+}
+
+message DeleteExerciseResp {
+    string message = 1;
+  
+}
+
+//
+message SendExerciseName {
+    string exercise_name = 1;  
+    string user_id = 2;
+}
+//
+message ExerciseExistsReturnIdResp {
+    string exercise_id = 2;
+}
+//
+message SendExerciseID {
+    string exercise_id = 1;  
+    string user_id = 2;
+}
+//
+message GetExerciseNameResp {
+    string exercise_name = 1;
+  
+}
+
+//
+message GetAllExercisesREq {
+    string user_id = 1;    //
+}
+
+message GetAllExercisesResp {
+    int64 number_of_exercises = 1;
+    repeated OneExerciseResp all_exericses = 2;
+}
+
+//
+message OneExerciseResp {
+    string id = 1;
+    string name = 2;
+    string body_part = 3;
+    string equipment = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+}

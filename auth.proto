@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package auth;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "/shared/auth";
+//
+service AuthService {
+//
+    rpc UserSignUp(UserSignUpReq) returns (UserSignUpResp) {};
+//
+    rpc UserLogin(UserLoginReq) returns (UserLoginResp) {};
+// 
+    rpc UserLogOut(SendUserId) returns (UserLogOutResp) {};
+//
+    rpc GetNewAccessToken(SendUUID) returns (GetNewAccessTokenResp) {}
+//
+    rpc PING(PINGreq) returns (PINGresp) {};
+    //
+    rpc ChangePass(ChangePassReq) returns (ChangePassResp) {};
+    //
+    rpc ChangeEmail(ChangeEmailReq) returns (ChangeEmailResp) {};
+    //
+    rpc GetHealth(GetHealthReq) returns (GetHealthResp) {};
+}
+
+message GetHealthReq {}
+
+message GetHealthResp {
+    string service_name = 1;
+    string status = 2;
+    google.protobuf.Duration postgres_resp_time = 3;
+    google.protobuf.Duration redis_resp_time = 4;    
+}
+
+
+message ChangeEmailReq {
+    string user_id = 1;
+    string old_email = 2;
+    string new_email = 3;  
+}
+message ChangeEmailResp {
+    string message = 1;  
+}
+
+
+
+message ChangePassReq{
+    string user_id = 1;
+    string old_pass = 2;
+    string new_pass = 3;
+}
+
+message ChangePassResp{
+    string message = 1;
+}
+
+message PINGreq {}
+
+message PINGresp{}
+
+message SendUUID {
+    string UUID = 1;
+}
+
+message GetNewAccessTokenResp {
+    string new_access_token = 1;
+}
+
+message SendUserId {
+    string user_id = 1;
+}
+
+message UserLogOutResp {
+    string message = 1;
+  
+}
+
+message UserLoginReq { 
+    string email = 1;
+    string password = 2;
+}
+
+message UserLoginResp {
+    string message = 1;
+    string name = 2;
+    string email = 3;
+    string access_token = 4;
+    string UUID = 5;
+    string user_id = 6;
+}
+
+//
+message UserSignUpReq {
+    string name = 1;
+    string email = 2;
+    string password = 3; 
+    string role = 4;
+}
+
+message UserSignUpResp {
+    string name = 1;
+    string email = 2;
+    string role = 3;
+    google.protobuf.Timestamp created_at = 4;
+    string user_id = 5;
+}
+
