@@ -26,6 +26,7 @@ const (
 type SendExerciseNames struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExerciseNames []string               `protobuf:"bytes,1,rep,name=exercise_names,json=exerciseNames,proto3" json:"exercise_names,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -65,6 +66,13 @@ func (x *SendExerciseNames) GetExerciseNames() []string {
 		return x.ExerciseNames
 	}
 	return nil
+}
+
+func (x *SendExerciseNames) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
 }
 
 type ExerciseIds struct {
@@ -887,9 +895,10 @@ var File_exercise_proto protoreflect.FileDescriptor
 
 const file_exercise_proto_rawDesc = "" +
 	"\n" +
-	"\x0eexercise.proto\x12\bexercise\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\":\n" +
+	"\x0eexercise.proto\x12\bexercise\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\"S\n" +
 	"\x11SendExerciseNames\x12%\n" +
-	"\x0eexercise_names\x18\x01 \x03(\tR\rexerciseNames\"0\n" +
+	"\x0eexercise_names\x18\x01 \x03(\tR\rexerciseNames\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"0\n" +
 	"\vExerciseIds\x12!\n" +
 	"\fexercise_ids\x18\x01 \x03(\tR\vexerciseIds\"\x9e\x01\n" +
 	"\x12sendEverythingResp\x12\x12\n" +

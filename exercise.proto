@@ -34,6 +34,7 @@ service ExerciseService {
 
 message SendExerciseNames {
     repeated string exercise_names = 1; 
+    string user_id = 2;
 }
 
 message  ExerciseIds {
