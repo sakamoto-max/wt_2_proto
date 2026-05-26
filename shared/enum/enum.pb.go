@@ -141,6 +141,7 @@ const (
 	TaskName_CREATE_EMPTY_PLAN_FOR_USER TaskName = 1
 	TaskName_SEND_EMAIL_FOR_SIGNING_UP  TaskName = 2
 	TaskName_UPDATE_PLAN                TaskName = 3
+	TaskName_UPDATE_VALUE_IN_DB         TaskName = 4
 )
 
 // Enum value maps for TaskName.
@@ -150,12 +151,14 @@ var (
 		1: "CREATE_EMPTY_PLAN_FOR_USER",
 		2: "SEND_EMAIL_FOR_SIGNING_UP",
 		3: "UPDATE_PLAN",
+		4: "UPDATE_VALUE_IN_DB",
 	}
 	TaskName_value = map[string]int32{
 		"ENUM_TASK_NAME_UNDEFINED":   0,
 		"CREATE_EMPTY_PLAN_FOR_USER": 1,
 		"SEND_EMAIL_FOR_SIGNING_UP":  2,
 		"UPDATE_PLAN":                3,
+		"UPDATE_VALUE_IN_DB":         4,
 	}
 )
 
@@ -257,12 +260,13 @@ const file_enum_proto_rawDesc = "" +
 	"\x0eTASK_COMPLETED\x10\x01\x12\x10\n" +
 	"\fTASK_PENDING\x10\x02\x12\x16\n" +
 	"\x12TASK_NOT_COMPLETED\x10\x03\x12\x0f\n" +
-	"\vTASK_FAILED\x10\x04*x\n" +
+	"\vTASK_FAILED\x10\x04*\x90\x01\n" +
 	"\bTaskName\x12\x1c\n" +
 	"\x18ENUM_TASK_NAME_UNDEFINED\x10\x00\x12\x1e\n" +
 	"\x1aCREATE_EMPTY_PLAN_FOR_USER\x10\x01\x12\x1d\n" +
 	"\x19SEND_EMAIL_FOR_SIGNING_UP\x10\x02\x12\x0f\n" +
-	"\vUPDATE_PLAN\x10\x03*]\n" +
+	"\vUPDATE_PLAN\x10\x03\x12\x16\n" +
+	"\x12UPDATE_VALUE_IN_DB\x10\x04*]\n" +
 	"\tQueueName\x12\x1d\n" +
 	"\x19ENUM_QUEUE_NAME_UNDEFINED\x10\x00\x12\x0e\n" +
 	"\n" +

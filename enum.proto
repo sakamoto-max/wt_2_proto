@@ -26,6 +26,7 @@ enum TaskName {
   CREATE_EMPTY_PLAN_FOR_USER = 1;
   SEND_EMAIL_FOR_SIGNING_UP = 2;
   UPDATE_PLAN = 3;  
+  UPDATE_VALUE_IN_DB = 4;
 }
 
 enum QueueName {
