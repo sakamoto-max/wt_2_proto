@@ -36,3 +36,14 @@ enum QueueName {
     EMAIL_QUEUE = 3;
 }
 
+
+enum QueueFields {
+    ENUM_QUEUE_FIELDS_UNDEFINED = 0;
+    USER_ID = 1;
+    EMAIL = 2;
+    USER_NAME = 3;
+    PLAN_NAME = 4;
+    EXERCISE_NAMES = 5;
+}
+
+
